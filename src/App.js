@@ -22,7 +22,7 @@ function Counter() {
   return (
     <p>
       <button onClick={handleStepDown}>-</button>
-      <h2>Step: {step} </h2>
+      <span>Step: {step} </span>
       <button onClick={handleStepUp}>+</button>
       <CounterDate step={step} />
     </p>
@@ -42,7 +42,7 @@ function CounterDate({ step }) {
   return (
     <p>
       <button onClick={handleCountDown}>-</button>
-      <h2>Count: {count} </h2>
+      <span>Count: {count} </span>
       <button onClick={handleCountUp}>+</button>
       <Calculator count={count} />
     </p>
@@ -50,5 +50,41 @@ function CounterDate({ step }) {
 }
 
 function Calculator({ count }) {
-  return <div>{count} days from today is </div>;
+  const futureDate = new Date();
+  futureDate.setDate(futureDate.getDate() + count);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const month = months[futureDate.getMonth()];
+  const day = days[futureDate.getDay()];
+
+  const newDate = `${day}, ${month} ${futureDate.getDate()} ${futureDate.getFullYear()}`;
+  console.log(newDate);
+  return (
+    <div>
+      {count} days from today is {newDate}
+    </div>
+  );
 }
