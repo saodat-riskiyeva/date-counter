@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./styles.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter />
     </div>
   );
 }
 
-export default App;
+function Counter() {
+  const [step, setStep] = useState(0);
+  function handleStepUp() {
+    setStep(step + 1);
+  }
+
+  function handleStepDown() {
+    setStep(step - 1);
+  }
+
+  return (
+    <p>
+      <button onClick={handleStepDown}>-</button>
+      <h2>Step: {step} </h2>
+      <button onClick={handleStepUp}>+</button>
+      <CounterDate step={step} />
+    </p>
+  );
+}
+
+function CounterDate({ step }) {
+  const [count, setCount] = useState(step);
+
+  function handleCountUp() {
+    setCount(count + step);
+  }
+
+  function handleCountDown() {
+    setCount(count - step);
+  }
+  return (
+    <p>
+      <button onClick={handleCountDown}>-</button>
+      <h2>Count: {count} </h2>
+      <button onClick={handleCountUp}>+</button>
+      <Calculator count={count} />
+    </p>
+  );
+}
+
+function Calculator({ count }) {
+  return <div>{count} days from today is </div>;
+}
