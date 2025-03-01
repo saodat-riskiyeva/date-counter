@@ -52,39 +52,39 @@ function CounterDate({ step }) {
 function Calculator({ count }) {
   const futureDate = new Date();
   futureDate.setDate(futureDate.getDate() + count);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // const months = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December",
+  // ];
 
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  // const days = [
+  //   "Sunday",
+  //   "Monday",
+  //   "Tuesday",
+  //   "Wednesday",
+  //   "Thursday",
+  //   "Friday",
+  //   "Saturday",
+  // ];
 
-  const month = months[futureDate.getMonth()];
-  const day = days[futureDate.getDay()];
+  // const month = months[futureDate.getMonth()];
+  // const day = days[futureDate.getDay()];
 
-  const newDate = `${day}, ${month} ${futureDate.getDate()} ${futureDate.getFullYear()}`;
-  console.log(newDate);
+  // const newDate = `${day}, ${month} ${futureDate.getDate()} ${futureDate.getFullYear()}`;
+
   return (
     <div>
-      {count} days from today is {newDate}
+      {count} days from today is {futureDate.toDateString()}
     </div>
   );
 }
