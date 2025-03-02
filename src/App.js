@@ -20,12 +20,12 @@ function Counter() {
   }
 
   return (
-    <p>
+    <div>
       <button onClick={handleStepDown}>-</button>
       <span>Step: {step} </span>
       <button onClick={handleStepUp}>+</button>
       <CounterDate step={step} />
-    </p>
+    </div>
   );
 }
 
@@ -40,12 +40,12 @@ function CounterDate({ step }) {
     setCount(count - step);
   }
   return (
-    <p>
+    <div>
       <button onClick={handleCountDown}>-</button>
       <span>Count: {count} </span>
       <button onClick={handleCountUp}>+</button>
       <Calculator count={count} />
-    </p>
+    </div>
   );
 }
 
@@ -84,7 +84,14 @@ function Calculator({ count }) {
 
   return (
     <div>
-      {count} days from today is {futureDate.toDateString()}
+      <span>
+        {count === 0
+          ? "Today is "
+          : count > 0
+          ? `${count} days from today is `
+          : `${Math.abs(count)} days ago was `}
+      </span>
+      <span> {futureDate.toDateString()} </span>
     </div>
   );
 }
